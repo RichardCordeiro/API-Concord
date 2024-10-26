@@ -48,10 +48,46 @@ inicio
    leia(y)
 fimprocedimento
 
+procedimento raiz(var n, r: real)
+var
+   x: real
+inicio
+   x <- n / 2
+   repita
+      r <- x
+      x <- (x + n / x) / 2
+   ate (abs(x - r) < 0.00001)
+fimprocedimento
+procedimento segundoGrau
+var
+   delta, raizDelta: real
+inicio
+   escreva("Entre com o primeiro numero (A): ")
+   leia(a)
+   escreva("Entre com o segundo numero (B): ")
+   leia(b)
+   escreva("Entre com o terceiro numero (C): ")
+   leia(c)
+
+   delta <- b * b - 4 * a * c
+
+   se (delta < 0) entao
+      escreval("Delta: ", delta, " Esta equação não possui raizes reais.")
+   senao
+      raiz(Delta, raizDelta) // calcula a raiz quadrada de delta
+      se (delta = 0) entao
+         escreval("Delta: ", delta, " Esta equação possui duas raizes reais iguais.")
+      senao
+         escreval("x1 = ", int((-1 * b + raizDelta) / (2 * a)))
+         escreval("x2 = ", int((-1 * b - raizDelta) / (2 * a)))
+      fimse
+   fimse
+fimprocedimento
+
 // Vari?veis Globais
 var
    opcao, i: inteiro
-   numero1, numero2, resultado: real
+   numero1, numero2, resultado,a , b, c: real
    str1, str2: caractere
    // Fun??o principal
 inicio
@@ -65,6 +101,7 @@ inicio
       escreval("4. Divis?o")
       escreval("5. Fatorial")
       escreval("6. Concatenar")
+      escreval("7. Equação segundo grau")
       escreval("0. Sair")
       escreva("Escolha uma op??o: ")
       leia(opcao)
@@ -110,7 +147,11 @@ inicio
          escreval(concatenar(str1,str2))
       fimse
 
-      se ((opcao <0) ou (opcao > 6)) entao
+      se opcao = 7 entao
+         segundoGrau    ()
+      fimse
+      
+      se ((opcao <0) ou (opcao > 7)) entao
          escreval("Entre com uma op??o existente")
       fimse
       se opcao <> 0 entao
