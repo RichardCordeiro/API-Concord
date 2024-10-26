@@ -21,6 +21,10 @@ inicio
    retorne a / b
 fimfuncao
 
+funcao concatenar(str1,str2:caracter):caracter
+       retorne str1 + str2
+fimfuncao
+
 // Fun??es auxiliares para leitura
 procedimento leiaNumeros(var a, b: real)
 inicio
@@ -36,11 +40,19 @@ inicio
    leia(x)
 fimprocedimento
 
+procedimento leiastring(var x, y: caracter)
+inicio
+   escreval("Entre com a primeira palavra: ")
+   leia(x)
+   escreval("Entre com a segunda palavra: ")
+   leia(y)
+fimprocedimento
+
 // Vari?veis Globais
 var
    opcao, i: inteiro
    numero1, numero2, resultado: real
-
+   str1, str2: caractere
    // Fun??o principal
 inicio
    opcao <- 10
@@ -52,6 +64,7 @@ inicio
       escreval("3. Multiplica??o")
       escreval("4. Divis?o")
       escreval("5. Fatorial")
+      escreval("6. Concatenar")
       escreval("0. Sair")
       escreva("Escolha uma op??o: ")
       leia(opcao)
@@ -92,8 +105,12 @@ inicio
          ate (i>numero1)
          escreval(resultado)
       fimse
+      se opcao = 6 entao
+         leiastring(str1,str2)
+         escreval(concatenar(str1,str2))
+      fimse
 
-      se ((opcao <0) ou (opcao > 5)) entao
+      se ((opcao <0) ou (opcao > 6)) entao
          escreval("Entre com uma op??o existente")
       fimse
       se opcao <> 0 entao
