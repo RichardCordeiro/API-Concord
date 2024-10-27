@@ -1,7 +1,7 @@
 # API-Concord
 
 <div align="center">
- <img src="./IMG/concord-logo.png" alt="API-Concord Logo"/>
+ <img src="./IMG/concord-logo.png" style='widht: 200px; height: 200px;' alt="API-Concord Logo"/>
 </div>
 
 ## 📚 Sobre o Projeto
