@@ -20,7 +20,11 @@ O objetivo do projeto é construir uma base sólida para uma calculadora que ofe
 ## 🚀 Funcionalidades Atuais
 
 - Operações Básicas;
-- Menu de Escolhas.
+- Menu de Escolhas;
+- Operação de cálculo fatorial;
+- Operação de cálculo de função de Segundo Grau;
+- Função de concatenação de 2 strings;
+- Função de Juros Simples e Composto.
 
 ## 🛠️ Tecnologias Utilizadas
 
