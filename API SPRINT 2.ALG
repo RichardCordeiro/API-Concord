@@ -1,6 +1,6 @@
-algoritmo "Calculadora Cient?fica"
+algoritmo "Calculadora Cientifica"
 
-// Defini??o das Fun??es de Opera??es Matem?ticas
+// Definicao das Funcoes de Operacoes Matematicas
 funcao adicao(x, y: real): real
 inicio
    retorne x + y
@@ -21,26 +21,27 @@ inicio
    retorne a / b
 fimfuncao
 
-funcao concatenar(str1,str2:caracter):caracter
-       retorne str1 + str2
+funcao concatenar(str1, str2: caracter): caracter
+inicio
+   retorne str1 + str2
 fimfuncao
 
-// Fun??es auxiliares para leitura
+// Funcoes auxiliares para leitura
 procedimento leiaNumeros(var a, b: real)
 inicio
-   escreva("Digite o primeiro n?mero: ")
+   escreva("Digite o primeiro numero: ")
    leia(a)
-   escreva("Digite o segundo n?mero: ")
+   escreva("Digite o segundo numero: ")
    leia(b)
 fimprocedimento
 
-procedimento leianumeroUnico(var x: real)
+procedimento leiaNumeroUnico(var x: real)
 inicio
-   escreval("Entre com o primeiro número: ")
+   escreval("Entre com o primeiro numero: ")
    leia(x)
 fimprocedimento
 
-procedimento leiastring(var x, y: caracter)
+procedimento leiaString(var x, y: caracter)
 inicio
    escreval("Entre com a primeira palavra: ")
    leia(x)
@@ -58,6 +59,7 @@ inicio
       x <- (x + n / x) / 2
    ate (abs(x - r) < 0.00001)
 fimprocedimento
+
 procedimento segundoGrau
 var
    delta, raizDelta: real
@@ -72,11 +74,11 @@ inicio
    delta <- b * b - 4 * a * c
 
    se (delta < 0) entao
-      escreval("Delta: ", delta, " Esta equação não possui raizes reais.")
+      escreval("Delta: ", delta, " Esta equacao nao possui raizes reais.")
    senao
-      raiz(Delta, raizDelta) // calcula a raiz quadrada de delta
+      raiz(delta, raizDelta) // calcula a raiz quadrada de delta
       se (delta = 0) entao
-         escreval("Delta: ", delta, " Esta equação possui duas raizes reais iguais.")
+         escreval("Delta: ", delta, " Esta equacao possui duas raizes reais iguais.")
       senao
          escreval("x1 = ", int((-1 * b + raizDelta) / (2 * a)))
          escreval("x2 = ", int((-1 * b - raizDelta) / (2 * a)))
@@ -84,30 +86,65 @@ inicio
    fimse
 fimprocedimento
 
-// Vari?veis Globais
+procedimento sjuros()
+var
+   x, y, z, juros, total: real
+inicio
+   escreval("Entre com o Capital: ")
+   leia(x)
+   escreval("Entre com a taxa de juros (ao ano): ")
+   leia(y)
+   escreval("Entre com o tempo (ao ano): ")
+   leia(z)
+
+   juros <- x*(y/100)*z
+   total <- juros + x
+   escreval("Total do montante:", total)
+
+fimprocedimento
+
+procedimento cjuros()
+var
+   x, y, z, montante: real
+inicio
+   escreval("Entre com o Capital inicial: ")
+   leia(x)
+   escreval("Entre com a taxa aplicada de juros compostos(em %): ")
+   leia(y)
+   escreval("Entre com o quantidade de vezes que os juros serao aplicados: ")
+   leia(z)
+
+   montante <- x * ((1+(y/100))^z)
+   escreval("o total do montante:", montante)
+
+
+fimprocedimento
+
+// Variaveis Globais
 var
    opcao, i: inteiro
-   numero1, numero2, resultado,a , b, c: real
+   numero1, numero2, resultado, a, b, c: real
    str1, str2: caractere
-   // Fun??o principal
+// Funcao principal
 inicio
    opcao <- 10
    enquanto opcao <> 0 faca
       // Exibir o menu
-      escreval("Calculadora Cient?fica")
-      escreval("1. Adi??o")
-      escreval("2. Subtra??o")
-      escreval("3. Multiplica??o")
-      escreval("4. Divis?o")
+      escreval("Calculadora Cientifica")
+      escreval("1. Adicao")
+      escreval("2. Subtracao")
+      escreval("3. Multiplicacao")
+      escreval("4. Divisao")
       escreval("5. Fatorial")
       escreval("6. Concatenar")
-      escreval("7. Equação segundo grau")
+      escreval("7. Equacao segundo grau")
+      escreval("8. Juros simples")
+      escreval("9. Juros composto")
       escreval("0. Sair")
-      escreva("Escolha uma op??o: ")
+      escreva("Escolha uma opcao: ")
       leia(opcao)
 
-      // Escolher a opera??o
-
+      // Escolher a operacao
       se opcao = 1 entao
          leiaNumeros(numero1, numero2)
          resultado <- adicao(numero1, numero2)
@@ -118,41 +155,47 @@ inicio
          resultado <- subtracao(numero1, numero2)
          escreval("Resultado: ", resultado)
       fimse
-      se opcao = 3  entao
+      se opcao = 3 entao
          leiaNumeros(numero1, numero2)
          resultado <- multiplicacao(numero1, numero2)
          escreval("Resultado: ", resultado)
       fimse
-      se opcao = 4  entao
+      se opcao = 4 entao
          leiaNumeros(numero1, numero2)
          se numero2 <> 0 entao
             resultado <- divisao(numero1, numero2)
             escreval("Resultado: ", resultado)
          senao
-            escreval("Erro: Divis?o por zero!")
+            escreval("Erro: Divisao por zero!")
          fimse
       fimse
       se opcao = 5 entao
-         leianumeroUnico(numero1)
+         leiaNumeroUnico(numero1)
          resultado <- 1
          i <- 1
          repita
             resultado <- resultado * i
-            i <- i+1
-         ate (i>numero1)
-         escreval(resultado)
+            i <- i + 1
+         ate (i > numero1)
+         escreval("Resultado: ", resultado)
       fimse
       se opcao = 6 entao
-         leiastring(str1,str2)
-         escreval(concatenar(str1,str2))
+         leiaString(str1, str2)
+         escreval("Resultado: ", concatenar(str1, str2))
+      fimse
+      se opcao = 7 entao
+         segundoGrau()
+      fimse
+      se opcao = 8 entao
+         sjuros()
+      fimse
+      se opcao = 9 entao
+         cjuros()
       fimse
 
-      se opcao = 7 entao
-         segundoGrau    ()
-      fimse
-      
-      se ((opcao <0) ou (opcao > 7)) entao
-         escreval("Entre com uma op??o existente")
+
+      se ((opcao < 0) ou (opcao > 9)) entao
+         escreval("Entre com uma opcao existente")
       fimse
       se opcao <> 0 entao
          escreval("")
