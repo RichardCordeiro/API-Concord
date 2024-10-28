@@ -36,29 +36,29 @@ O objetivo do projeto é construir uma base sólida para uma calculadora que ofe
   <table>
     <tr>
       <td align="center">
-        <img src="./IMG/victor.jpeg.png" width="100px;" alt="Integrante 1"/>
+        <img src="./IMG/victor.jpeg" width="100px;" alt="Integrante 1"/>
         <br />
         <b>Victor Nogueira</b>
       </td>
       <td align="center">
-        <img src="./IMG/richard.jpeg.png" width="100px;" alt="Integrante 2"/>
+        <img src="./IMG/richard.jpeg" width="100px;" alt="Integrante 2"/>
         <br />
         <b>Richard Cordeiro</b>
       </td>
       <td align="center">
-        <img src="./IMG/joao.jpg.png" width="100px;" alt="Integrante 3"/>
+        <img src="./IMG/joao.jpg" width="100px;" alt="Integrante 3"/>
         <br />
         <b>João Baranov</b>
       </td>
     </tr>
     <tr>
       <td align="center">
-        <img src="./IMG/fabiano.jpg.png" width="100px;" alt="Integrante 4"/>
+        <img src="./IMG/fabiano.jpg" width="100px;" alt="Integrante 4"/>
         <br />
         <b>Fabiano Ribeiro</b>
       </td>
       <td align="center">
-        <img src="./IMG/marco.jpg.png" width="100px;" alt="Integrante 5"/>
+        <img src="./IMG/marco.jpg" width="100px;" alt="Integrante 5"/>
         <br />
         <b>Marco Godoi</b>
       </td>
