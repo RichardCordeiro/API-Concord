@@ -126,7 +126,7 @@ var
     valorDecimal: inteiro
     tamanhoInput: inteiro
 inicio
-   escreval("Digite um valor bin·rio")
+   escreval("Digite um valor bin√°rio")
       leia(binarioInput)
       tamanhoInput <- compr(Numpcarac(binarioInput))
       i <- 0
@@ -135,7 +135,7 @@ inicio
 
             binarioInvertido <- copia(binarioInput, (tamanhoInput - i), 1)
             se binarioInvertido > "1" entao
-               escreva("O bin·rio n„o È v·lido")
+               escreva("O bin√°rio n√£o √© v√°lido")
                interrompa
             fimse
             se binarioInvertido = "1" entao
@@ -146,7 +146,7 @@ inicio
             valorImaginario <- (valorImaginario * 2)
 
             se i >= tamanhoInput entao
-               escreva("o n˙mero bin·rio ", binarioInput, " È", valorDecimal, " em numeraÁ„o decimal")
+               escreva("o n√∫mero bin√°rio ", binarioInput, " √©", valorDecimal, " em numera√ß√£o decimal")
             fimse
       ate i >= tamanhoInput
 fimprocedimento
@@ -156,7 +156,7 @@ var
    Num, Valor: inteiro
 Resultado1: Caracter
 inicio
-   Escreval ("Digite um n˙mero Decimal: ")
+   Escreval ("Digite um n√∫mero Decimal: ")
   Leia (Num)
    Valor <- (Num)
    enquanto (Num > 0) faca
@@ -169,7 +169,7 @@ inicio
      Num <- (Num div 2)
    FimEnquanto
 
-     Escreval ("O n˙mero:", Valor, " Decimal ser·: ", Resultado1, " em Bin·rio")
+     Escreval ("O n√∫mero:", Valor, " Decimal ser√°: ", Resultado1, " em Bin√°rio")
 fimprocedimento
 
 // Variaveis Globais
@@ -192,8 +192,8 @@ inicio
       escreval("7. Equacao segundo grau")
       escreval("8. Juros simples")
       escreval("9. Juros composto")
-      escreval("10. Bin·rio para Decimal")
-      escreval("11. Decimal para Bin·rio")
+      escreval("10. Bin√°rio para Decimal")
+      escreval("11. Decimal para Bin√°rio")
       escreval("0. Sair")
       escreva("Escolha uma opcao: ")
       leia(opcao)
