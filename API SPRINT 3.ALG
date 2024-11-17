@@ -1,4 +1,6 @@
 algoritmo "Calculadora Cientifica"
+// Disciplina   : [Linguagem e L�gica de Programa��o] 
+// Professor   : Antonio Carlos Nicolodi 
 
 // Definicao das Funcoes de Operacoes Matematicas
 funcao adicao(x, y: real): real
@@ -126,7 +128,7 @@ var
     valorDecimal: inteiro
     tamanhoInput: inteiro
 inicio
-   escreval("Digite um valor binário")
+   escreval("Digite um valor binario")
       leia(binarioInput)
       tamanhoInput <- compr(Numpcarac(binarioInput))
       i <- 0
@@ -135,7 +137,7 @@ inicio
 
             binarioInvertido <- copia(binarioInput, (tamanhoInput - i), 1)
             se binarioInvertido > "1" entao
-               escreva("O binário não é válido")
+               escreva("O binario nao e valido")
                interrompa
             fimse
             se binarioInvertido = "1" entao
@@ -146,7 +148,7 @@ inicio
             valorImaginario <- (valorImaginario * 2)
 
             se i >= tamanhoInput entao
-               escreva("o número binário ", binarioInput, " é", valorDecimal, " em numeração decimal")
+               escreva("o numero binario ", binarioInput, " e", valorDecimal, " em numeracao decimal")
             fimse
       ate i >= tamanhoInput
 fimprocedimento
@@ -156,7 +158,7 @@ var
    Num, Valor: inteiro
 Resultado1: Caracter
 inicio
-   Escreval ("Digite um número Decimal: ")
+   Escreval ("Digite um numero Decimal: ")
   Leia (Num)
    Valor <- (Num)
    enquanto (Num > 0) faca
@@ -169,7 +171,7 @@ inicio
      Num <- (Num div 2)
    FimEnquanto
 
-     Escreval ("O número:", Valor, " Decimal será: ", Resultado1, " em Binário")
+     Escreval ("O numero:", Valor, " Decimal sera: ", Resultado1, " em Binario")
 fimprocedimento
 
 // Variaveis Globais
@@ -192,8 +194,8 @@ inicio
       escreval("7. Equacao segundo grau")
       escreval("8. Juros simples")
       escreval("9. Juros composto")
-      escreval("10. Binário para Decimal")
-      escreval("11. Decimal para Binário")
+      escreval("10. Binario para Decimal")
+      escreval("11. Decimal para Binario")
       escreval("0. Sair")
       escreva("Escolha uma opcao: ")
       leia(opcao)
