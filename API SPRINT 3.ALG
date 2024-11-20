@@ -216,7 +216,7 @@ var
       hexadecimal: vetor[1..20] de caractere // Vetor para armazenar os dígitos hexadecimais temporariamente
       digitos_hex: vetor[0..15] de caractere
    inicio
-    escreva("Digite o número binário: ")
+    escreva("Digite o número binario: ")
     leia(binario)
 
     // Inicializa o vetor de dígitos hexadecimais
@@ -258,7 +258,7 @@ var
     fimenquanto
 
     // Exibe o número convertido em ordem inversa
-    escreva("O número binário em hexadecimal é: ")
+    escreva("O número binario em hexadecimal é: ")
     indice <- indice - 1
     para i de indice ate 1 passo -1 faca
         escreva(hexadecimal[i])
