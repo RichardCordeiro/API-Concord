@@ -209,6 +209,193 @@ var
  Escreval ("O numero binario e",  octal, " em octal")
 fimprocedimento
 
+procedimento binhex()
+var
+      binario,i, digito, indice: inteiro
+      decimal, base, expoente: real
+      hexadecimal: vetor[1..20] de caractere // Vetor para armazenar os dígitos hexadecimais temporariamente
+      digitos_hex: vetor[0..15] de caractere
+   inicio
+    escreva("Digite o número binário: ")
+    leia(binario)
+
+    // Inicializa o vetor de dígitos hexadecimais
+    digitos_hex[0] <- "0"
+    digitos_hex[1] <- "1"
+    digitos_hex[2] <- "2"
+    digitos_hex[3] <- "3"
+    digitos_hex[4] <- "4"
+    digitos_hex[5] <- "5"
+    digitos_hex[6] <- "6"
+    digitos_hex[7] <- "7"
+    digitos_hex[8] <- "8"
+    digitos_hex[9] <- "9"
+    digitos_hex[10] <- "A"
+    digitos_hex[11] <- "B"
+    digitos_hex[12] <- "C"
+    digitos_hex[13] <- "D"
+    digitos_hex[14] <- "E"
+    digitos_hex[15] <- "F"
+
+  // Convertendo o número binário para decimal
+    decimal <- 0
+    expoente <- 0
+    base <- 2
+    enquanto (binario > 0) faça
+        digito <- binario mod 10
+        decimal <- decimal + (digito * (base ^ expoente))
+        binario <- binario div 10
+        expoente <- expoente + 1
+    fimenquanto
+
+    // Convertendo o número decimal para hexadecimal
+    indice <- 1
+    enquanto (decimal >= 1) faça
+        digito <- decimal mod 16 // Obtém o dígito correspondente
+        hexadecimal[indice] <- digitos_hex[digito] // Armazena o dígito hexadecimal no vetor
+        decimal <- decimal / 16 // Atualiza decimal usando divisão inteira
+        indice <- indice + 1
+    fimenquanto
+
+    // Exibe o número convertido em ordem inversa
+    escreva("O número binário em hexadecimal é: ")
+    indice <- indice - 1
+    para i de indice ate 1 passo -1 faca
+        escreva(hexadecimal[i])
+    fimpara
+    escreval("")
+fimprocedimento
+
+procedimento hexbin()
+Var
+
+      hexadecimal: caractere
+      binario: vetor[1..80] de caractere // Vetor para armazenar o número binário temporariamente
+      digitos_hex: vetor[0..40] de caractere
+      binario_digito: vetor[0..40] de caractere
+      digito_hex, i, j, k, indice, tamanho, hexaD: inteiro
+   inicio
+    escreva("Digite o número hexadecimal: ")
+    leia(hexadecimal)
+
+    // Inicializa o vetor de dígitos hexadecimais
+    digitos_hex[0] <- "0"
+    digitos_hex[1] <- "1"
+    digitos_hex[2] <- "2"
+    digitos_hex[3] <- "3"
+    digitos_hex[4] <- "4"
+    digitos_hex[5] <- "5"
+    digitos_hex[6] <- "6"
+    digitos_hex[7] <- "7"
+    digitos_hex[8] <- "8"
+    digitos_hex[9] <- "9"
+    digitos_hex[10] <- "A"
+    digitos_hex[11] <- "B"
+    digitos_hex[12] <- "C"
+    digitos_hex[13] <- "D"
+    digitos_hex[14] <- "E"
+    digitos_hex[15] <- "F"
+
+    digitos_hex[16] <- "10"
+    digitos_hex[17] <- "11"
+    digitos_hex[18] <- "12"
+    digitos_hex[19] <- "13"
+    digitos_hex[20] <- "14"
+    digitos_hex[21] <- "15"
+    digitos_hex[22] <- "16"
+    digitos_hex[23] <- "17"
+    digitos_hex[24] <- "18"
+    digitos_hex[25] <- "19"
+    digitos_hex[26] <- "1A"
+    digitos_hex[27] <- "1B"
+    digitos_hex[28] <- "1C"
+    digitos_hex[29] <- "1D"
+    digitos_hex[30] <- "1E"
+    digitos_hex[31] <- "1F"
+
+    digitos_hex[32] <- "20"
+    digitos_hex[33] <- "21"
+    digitos_hex[34] <- "22"
+    digitos_hex[35] <- "23"
+    digitos_hex[36] <- "24"
+    digitos_hex[37] <- "25"
+    digitos_hex[38] <- "26"
+    digitos_hex[39] <- "27"
+    digitos_hex[40] <- "28"
+
+
+    // Inicializa o vetor com representações binárias
+    binario_digito[0] <- "0000"
+    binario_digito[1] <- "0001"
+    binario_digito[2] <- "0010"
+    binario_digito[3] <- "0011"
+    binario_digito[4] <- "0100"
+    binario_digito[5] <- "0101"
+    binario_digito[6] <- "0110"
+    binario_digito[7] <- "0111"
+    binario_digito[8] <- "1000"
+    binario_digito[9] <- "1001"
+    binario_digito[10] <- "1010"
+    binario_digito[11] <- "1011"
+    binario_digito[12] <- "1100"
+    binario_digito[13] <- "1101"
+    binario_digito[14] <- "1110"
+    binario_digito[15] <- "1111"
+
+        binario_digito[16] <- "10000"
+    binario_digito[17] <- "10001"
+    binario_digito[18] <- "10010"
+    binario_digito[19] <- "10011"
+    binario_digito[20] <- "10100"
+    binario_digito[21] <- "10101"
+    binario_digito[22] <- "10110"
+    binario_digito[23] <- "10111"
+    binario_digito[24] <- "11000"
+    binario_digito[25] <- "11001"
+    binario_digito[26] <- "11010"
+    binario_digito[27] <- "11011"
+    binario_digito[28] <- "11100"
+    binario_digito[29] <- "11101"
+    binario_digito[30] <- "11110"
+    binario_digito[31] <- "11111"
+
+    binario_digito[32] <- "100000"
+    binario_digito[33] <- "100001"
+    binario_digito[34] <- "100010"
+    binario_digito[35] <- "100011"
+    binario_digito[36] <- "100100"
+    binario_digito[37] <- "100101"
+    binario_digito[38] <- "100110"
+    binario_digito[39] <- "100111"
+    binario_digito[40] <- "101000"
+
+
+    // Obtém o tamanho do valor hexadecimal
+    tamanho <- compr(hexadecimal)
+    indice <- 1
+
+    // Converte cada caractere do hexadecimal para binário
+    para i de 1 ate tamanho faca
+        // Procura o índice correspondente do caractere hexadecimal
+        para j de 0 ate 40 faca
+            se digitos_hex[j] = hexadecimal entao
+                digito_hex <- j
+                // Armazena a representação binária correspondente
+                para k de 1 ate 4 faca
+                    binario[indice] <- binario_digito[digito_hex][k]
+                    indice <- indice + 1
+                fimpara
+            fimse
+        fimpara
+    fimpara
+
+    // Exibe o número convertido
+    escreva("O número hexadecimal em binário é: ")
+        escreva(binario[i])
+    escreval("")
+// Seção de Declarações das variáveis
+fimprocedimento
+
 
 
 // Variaveis Globais
@@ -234,6 +421,9 @@ inicio
       escreval("10. Binario para Decimal")
       escreval("11. Decimal para Binario")
       escreval("12. Binario para Octal")
+      
+      escreval("14. Binario para Hexadecimal")
+      escreval("15. Hexadecimal para Binario")
       escreval("0. Sair")
       escreva("Escolha uma opcao: ")
       leia(opcao)
@@ -295,8 +485,14 @@ inicio
       se opcao = 12 entao
          binoct()
       fimse
+      se opcao = 14 entao
+         binhex()
+      fimse
+       se opcao = 15 entao
+         hexbin()
+      fimse
 
-      se ((opcao < 0) ou (opcao > 12)) entao
+      se ((opcao < 0) ou (opcao > 15)) entao
          escreval("Entre com uma opcao existente")
       fimse
       se opcao <> 0 entao
