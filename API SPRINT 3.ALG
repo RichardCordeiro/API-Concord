@@ -275,7 +275,7 @@ Var
       binario_digito: vetor[0..40] de caractere
       digito_hex, i, j, k, indice, tamanho, hexaD: inteiro
    inicio
-    escreva("Digite o número hexadecimal: ")
+    escreva("Digite o numero hexadecimal: ")
     leia(hexadecimal)
 
     // Inicializa o vetor de dígitos hexadecimais
@@ -390,7 +390,7 @@ Var
     fimpara
 
     // Exibe o número convertido
-    escreva("O número hexadecimal em binário é: ")
+    escreva("O numero hexadecimal em binario e: ")
         escreva(binario[i])
     escreval("")
 // Seção de Declarações das variáveis
