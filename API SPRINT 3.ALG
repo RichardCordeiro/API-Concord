@@ -1,6 +1,6 @@
 algoritmo "Calculadora Cientifica"
-// Disciplina   : [Linguagem e LÛgica de ProgramaÁ„o] 
-// Professor   : Antonio Carlos Nicolodi 
+// Disciplina   : [Linguagem e L√≥gica de Programa√ß√£o]
+// Professor   : Antonio Carlos Nicolodi
 
 // Definicao das Funcoes de Operacoes Matematicas
 funcao adicao(x, y: real): real
@@ -174,6 +174,43 @@ inicio
      Escreval ("O numero:", Valor, " Decimal sera: ", Resultado1, " em Binario")
 fimprocedimento
 
+procedimento binoct()
+var
+      valor: real
+      octal, base ,decimal, expoente: real
+      digito: real
+   inicio
+    escreva("Digite o numero binario: ")
+    leia(valor)
+
+    octal <- 0
+    base <- 2
+    expoente <- 0
+
+    // BINARIO PARA DECIMAL
+    decimal <- 0
+    enquanto (valor >= 1) fa√ßa
+        digito <- valor % 10
+        decimal <- decimal + (digito * (base ^ expoente))
+        valor <- valor / 10
+        expoente <- expoente + 1
+    fimenquanto
+
+    // DECIMAL PARA OCTAL
+    octal <- 0
+    expoente <- 0
+    enquanto (decimal >= 1) fa√ßa
+        digito <- decimal % 8
+        octal <- octal + (digito * (10 ^ expoente))
+        decimal <- decimal / 8
+        expoente <- expoente + 1
+    fimenquanto
+
+ Escreval ("O numero binario e",  octal, " em octal")
+fimprocedimento
+
+
+
 // Variaveis Globais
 var
    opcao, i: inteiro
@@ -181,7 +218,7 @@ var
    str1, str2: caractere
 // Funcao principal
 inicio
-   opcao <- 10
+   opcao <- 12
    enquanto opcao <> 0 faca
       // Exibir o menu
       escreval("Calculadora Cientifica")
@@ -196,6 +233,7 @@ inicio
       escreval("9. Juros composto")
       escreval("10. Binario para Decimal")
       escreval("11. Decimal para Binario")
+      escreval("12. Binario para Octal")
       escreval("0. Sair")
       escreva("Escolha uma opcao: ")
       leia(opcao)
@@ -254,9 +292,11 @@ inicio
       se opcao = 11 entao
          decbin()
       fimse
+      se opcao = 12 entao
+         binoct()
+      fimse
 
-
-      se ((opcao < 0) ou (opcao > 11)) entao
+      se ((opcao < 0) ou (opcao > 12)) entao
          escreval("Entre com uma opcao existente")
       fimse
       se opcao <> 0 entao
