@@ -209,6 +209,40 @@ var
  Escreval ("O numero binario e",  octal, " em octal")
 fimprocedimento
 
+procedimento Octbin()
+var
+   octal, decimal, binario, base, expoente, digito, i, j, tamanho: real
+inicio
+   escreva("Digite o número octal: ")
+   leia(octal)
+
+   // Convertendo o número octal para decimal
+   decimal <- 0
+   expoente <- 0
+   base <- 8
+   enquanto (octal >= 1) faça
+      digito <- octal % 10
+      decimal <- decimal + (digito * (base ^ expoente))
+      octal <- octal / 10
+      expoente <- expoente + 1
+   fimenquanto
+
+   // Convertendo o número decimal para binário
+   binario <- 0
+   expoente <- 0
+   base <- 2
+   enquanto (decimal >= 1) faça
+      digito <- decimal % 2
+      binario <- binario + (digito * (10 ^ expoente))
+      decimal <- decimal / 2
+      expoente <- expoente + 1
+   fimenquanto
+
+   // Exibe o número convertido
+   escreval("O número octal em binário é: ", binario)
+
+fimprocedimento
+
 procedimento binhex()
 var
       binario,i, digito, indice: inteiro
@@ -216,7 +250,7 @@ var
       hexadecimal: vetor[1..20] de caractere // Vetor para armazenar os dígitos hexadecimais temporariamente
       digitos_hex: vetor[0..15] de caractere
    inicio
-    escreva("Digite o número binário: ")
+    escreva("Digite o número binario: ")
     leia(binario)
 
     // Inicializa o vetor de dígitos hexadecimais
@@ -258,7 +292,7 @@ var
     fimenquanto
 
     // Exibe o número convertido em ordem inversa
-    escreva("O número binário em hexadecimal é: ")
+    escreva("O número binario em hexadecimal é: ")
     indice <- indice - 1
     para i de indice ate 1 passo -1 faca
         escreva(hexadecimal[i])
@@ -405,7 +439,7 @@ var
    str1, str2: caractere
 // Funcao principal
 inicio
-   opcao <- 12
+   opcao <- 15
    enquanto opcao <> 0 faca
       // Exibir o menu
       escreval("Calculadora Cientifica")
@@ -421,7 +455,7 @@ inicio
       escreval("10. Binario para Decimal")
       escreval("11. Decimal para Binario")
       escreval("12. Binario para Octal")
-      
+      escreval("13. Octal para Binario")
       escreval("14. Binario para Hexadecimal")
       escreval("15. Hexadecimal para Binario")
       escreval("0. Sair")
@@ -484,6 +518,9 @@ inicio
       fimse
       se opcao = 12 entao
          binoct()
+      fimse
+      se opcao = 13 entao
+         octbin()
       fimse
       se opcao = 14 entao
          binhex()
