@@ -24,7 +24,8 @@ O objetivo do projeto é construir uma base sólida para uma calculadora que ofe
 - Operação de cálculo fatorial;
 - Operação de cálculo de função de Segundo Grau;
 - Função de concatenação de 2 strings;
-- Função de Juros Simples e Composto.
+- Função de Juros Simples e Composto;
+- Conversão de bases numericas (B10 X B2 / B2 x B10 / B2 x B8 / B8 x B2 / B2 x B16 / B16 x B2)
 
 ## 🛠️ Tecnologias Utilizadas
 
