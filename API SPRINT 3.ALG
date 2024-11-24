@@ -122,116 +122,188 @@ fimprocedimento
 procedimento bindec()
 var
    binarioInput: caractere
-    i: inteiro
-    valorImaginario: inteiro
-    binarioInvertido: caractere
-    valorDecimal: inteiro
-    tamanhoInput: inteiro
+   i, tamanhoInput, valorImaginario, valorDecimal: inteiro
+   binarioInvertido: caractere
+   valido: logico
 inicio
-   escreval("Digite um valor binario")
-      leia(binarioInput)
-      tamanhoInput <- compr(Numpcarac(binarioInput))
-      i <- 0
+   escreval("Digite um valor binário:")
+   leia(binarioInput)
+
+   // Validando se o valor é um número binário
+   valido <- verdadeiro
+   tamanhoInput <- compr(binarioInput)
+   para i de 1 até tamanhoInput faca
+      se (copia(binarioInput, i, 1) < "0") ou (copia(binarioInput, i, 1) > "1") então
+         valido <- falso
+         interrompa
+      fimse
+   fimpara
+
+   se valido = falso então
+      escreval("Erro: O valor digitado não é um número binário válido.")
+   senao
+      // Convertendo o binário para decimal
       valorImaginario <- 1
-      repita
+      valorDecimal <- 0
+      para i de tamanhoInput até 1 passo -1 faca
+         binarioInvertido <- copia(binarioInput, i, 1)
+         se binarioInvertido = "1" então
+            valorDecimal <- valorDecimal + valorImaginario
+         fimse
+         valorImaginario <- valorImaginario * 2
+      fimpara
 
-            binarioInvertido <- copia(binarioInput, (tamanhoInput - i), 1)
-            se binarioInvertido > "1" entao
-               escreva("O binario nao e valido")
-               interrompa
-            fimse
-            se binarioInvertido = "1" entao
-               valorDecimal <- valorDecimal + valorImaginario
-            fimse
-            i <- i + 1
-
-            valorImaginario <- (valorImaginario * 2)
-
-            se i >= tamanhoInput entao
-               escreva("o numero binario ", binarioInput, " e", valorDecimal, " em numeracao decimal")
-            fimse
-      ate i >= tamanhoInput
+      escreval("O número binário ", binarioInput, " é ", valorDecimal, " em numeração decimal.")
+   fimse
 fimprocedimento
+
 
 procedimento decbin()
 var
-   Num, Valor: inteiro
-Resultado1: Caracter
+   num, valor, digito: inteiro
+   resultado: caractere
+   numTexto: caractere
+   valido: logico
+   i, tamanho: inteiro
 inicio
-   Escreval ("Digite um numero Decimal: ")
-  Leia (Num)
-   Valor <- (Num)
-   enquanto (Num > 0) faca
-    Escolha (Num mod 2)
-       caso 0
-        Resultado1 <- ("0" + Resultado1)
-         caso 1
-          Resultado1 <- ("1" + Resultado1)
-    FimEscolha
-     Num <- (Num div 2)
-   FimEnquanto
+   escreval("Digite um número Decimal: ")
+   leia(numTexto)
 
-     Escreval ("O numero:", Valor, " Decimal sera: ", Resultado1, " em Binario")
+   // Validando se a entrada é numérica
+   valido <- verdadeiro
+   tamanho <- compr(numTexto)
+   para i de 1 ate tamanho faca
+      se (copia(numTexto, i, 1) < "0") ou (copia(numTexto, i, 1) > "9") entao
+         valido <- falso
+         interrompa
+      fimse
+   fimpara
+
+   se valido = falso então
+      escreval("Erro: O número digitado não é um número decimal válido.")
+   senao
+      // Convertendo o texto para número inteiro
+      num <- 0
+      para i de 1 ate tamanho faca
+         num <- num * 10 + (asc(copia(numTexto, i, 1)) - asc("0"))
+      fimpara
+
+      valor <- num
+      resultado <- ""
+
+      // Decimal para Binário
+      enquanto (num > 0) faca
+         digito <- num mod 2
+         se digito = 0 entao
+            resultado <- "0" + resultado
+         senao
+            resultado <- "1" + resultado
+         fimse
+         num <- num div 2
+      fimenquanto
+
+      se resultado = "" entao
+         resultado <- "0" // Caso o número seja zero
+      fimse
+
+      escreval("O número: ", valor, " Decimal será: ", resultado, " em Binário")
+   fimse
 fimprocedimento
+
 
 procedimento binoct()
 var
-      valor: real
-      octal, base ,decimal, expoente: real
-      digito: real
-   inicio
-    escreva("Digite o numero binario: ")
-    leia(valor)
+   valorTexto: caractere
+   valor, octal, base, decimal, expoente, digito: real
+   tamanho, i: inteiro
+   valido: logico
+inicio
+   escreva("Digite o número binário: ")
+   leia(valorTexto)
 
-    octal <- 0
-    base <- 2
-    expoente <- 0
+   // Validando se o número é binário
+   valido <- verdadeiro
+   tamanho <- compr(valorTexto)
+   para i de 1 ate tamanho faca
+      se (copia(valorTexto, i, 1) < "0") ou (copia(valorTexto, i, 1) > "1") entao
+         valido <- falso
+         interrompa
+      fimse
+   fimpara
 
-    // BINARIO PARA DECIMAL
-    decimal <- 0
-    enquanto (valor >= 1) faça
-        digito <- valor % 10
-        decimal <- decimal + (digito * (base ^ expoente))
-        valor <- valor / 10
-        expoente <- expoente + 1
-    fimenquanto
+   se valido = falso entao
+      escreval("Erro: O número digitado não é binário válido.")
+      senao
+      // Convertendo o texto para número real
+   valor <- 0
+   para i de 1 ate tamanho faca
+      valor <- valor * 10 + (asc(copia(valorTexto, i, 1)) - asc("0"))
+   fimpara
 
-    // DECIMAL PARA OCTAL
-    octal <- 0
-    expoente <- 0
-    enquanto (decimal >= 1) faça
-        digito <- decimal % 8
-        octal <- octal + (digito * (10 ^ expoente))
-        decimal <- decimal / 8
-        expoente <- expoente + 1
-    fimenquanto
+   // BINÁRIO PARA DECIMAL
+   decimal <- 0
+   base <- 2
+   expoente <- 0
+   enquanto (valor >= 1) faca
+      digito <- valor % 10
+      decimal <- decimal + (digito * (base ^ expoente))
+      valor <- valor / 10
+      expoente <- expoente + 1
+   fimenquanto
 
- Escreval ("O numero binario e",  octal, " em octal")
+   // DECIMAL PARA OCTAL
+   octal <- 0
+   expoente <- 0
+   enquanto (decimal >= 1) faca
+      digito <- decimal % 8
+      octal <- octal + (digito * (10 ^ expoente))
+      decimal <- decimal / 8
+      expoente <- expoente + 1
+   fimenquanto
+
+   // Exibe o número convertido
+   escreval("O número binário em octal é: ", octal)
+   fimse
 fimprocedimento
 
 procedimento Octbin()
 var
-   octal, decimal, binario, base, expoente, digito, i, j, tamanho: real
+   octal, decimal, binario, base, expoente, digito: real
+   octalTexto: caractere
+   tamanho, i: inteiro
+   valido: logico
 inicio
    escreva("Digite o número octal: ")
-   leia(octal)
+   leia(octalTexto)
 
-   // Convertendo o número octal para decimal
+   // Validando se o número é octal
+   valido <- verdadeiro
+   tamanho <- compr(octalTexto)
+   para i de 1 ate tamanho faca
+      se (copia(octalTexto, i, 1) < "0") ou (copia(octalTexto, i, 1) > "7") entao
+         valido <- falso
+         interrompa
+      fimse
+   fimpara
+
+   se valido = falso entao
+      escreval("Erro: O número digitado não é octal válido.")
+      senao
+      // Convertendo o número octal para decimal
    decimal <- 0
    expoente <- 0
    base <- 8
-   enquanto (octal >= 1) faça
-      digito <- octal % 10
+   para i de tamanho ate 1 passo -1 faca
+      digito <-  asc(copia(octalTexto, i, 1)) - asc("0")
       decimal <- decimal + (digito * (base ^ expoente))
-      octal <- octal / 10
       expoente <- expoente + 1
-   fimenquanto
+   fimpara
 
    // Convertendo o número decimal para binário
    binario <- 0
    expoente <- 0
    base <- 2
-   enquanto (decimal >= 1) faça
+   enquanto (decimal >= 1) faca
       digito <- decimal % 2
       binario <- binario + (digito * (10 ^ expoente))
       decimal <- decimal / 2
@@ -240,195 +312,117 @@ inicio
 
    // Exibe o número convertido
    escreval("O número octal em binário é: ", binario)
+   fimse
+
 
 fimprocedimento
+
+
+
 
 procedimento binhex()
 var
-      binario,i, digito, indice: inteiro
-      decimal, base, expoente: real
-      hexadecimal: vetor[1..20] de caractere // Vetor para armazenar os dígitos hexadecimais temporariamente
-      digitos_hex: vetor[0..15] de caractere
-   inicio
-    escreva("Digite o número binario: ")
-    leia(binario)
+   binario, hexadecimal, caract: caractere
+   decimal, digito, tamanho, valor_hex: inteiro
+inicio
+   escreva("Digite o número binário: ")
+   leia(binario)
 
-    // Inicializa o vetor de dígitos hexadecimais
-    digitos_hex[0] <- "0"
-    digitos_hex[1] <- "1"
-    digitos_hex[2] <- "2"
-    digitos_hex[3] <- "3"
-    digitos_hex[4] <- "4"
-    digitos_hex[5] <- "5"
-    digitos_hex[6] <- "6"
-    digitos_hex[7] <- "7"
-    digitos_hex[8] <- "8"
-    digitos_hex[9] <- "9"
-    digitos_hex[10] <- "A"
-    digitos_hex[11] <- "B"
-    digitos_hex[12] <- "C"
-    digitos_hex[13] <- "D"
-    digitos_hex[14] <- "E"
-    digitos_hex[15] <- "F"
+   // Convertendo binário para decimal
+   decimal <- 0
+   tamanho <- compr(binario)
+   para i de 1 até tamanho faça
+      caract <- copia(binario, i, 1) // Extrai o caractere
+      digito <- asc(caract) - 48 // Converte caractere para número
+      se (digito <> 0) e (digito <> 1) entao
+         escreval("Erro: O número contém dígitos que não são binários (0 ou 1).")
+         retorne
+      fimse
+      decimal <- decimal * 2 + digito
+   fimpara
 
-  // Convertendo o número binário para decimal
-    decimal <- 0
-    expoente <- 0
-    base <- 2
-    enquanto (binario > 0) faça
-        digito <- binario mod 10
-        decimal <- decimal + (digito * (base ^ expoente))
-        binario <- binario div 10
-        expoente <- expoente + 1
-    fimenquanto
+   // Convertendo decimal para hexadecimal
+   hexadecimal <- ""
+   enquanto decimal > 0 faça
+      valor_hex <- decimal mod 16
+      se valor_hex < 10 então
+         caract <- carac(valor_hex + 48) // Dígito 0-9
+      senão
+         caract <- carac(valor_hex + 55) // Letra A-F
+      fimse
+      hexadecimal <- caract + hexadecimal
+      decimal <- decimal div 16
+   fimenquanto
 
-    // Convertendo o número decimal para hexadecimal
-    indice <- 1
-    enquanto (decimal >= 1) faça
-        digito <- decimal mod 16 // Obtém o dígito correspondente
-        hexadecimal[indice] <- digitos_hex[digito] // Armazena o dígito hexadecimal no vetor
-        decimal <- decimal / 16 // Atualiza decimal usando divisão inteira
-        indice <- indice + 1
-    fimenquanto
+   // Trata caso especial para binário 0
+   se hexadecimal = "" então
+      hexadecimal <- "0"
+   fimse
 
-    // Exibe o número convertido em ordem inversa
-    escreva("O número binario em hexadecimal é: ")
-    indice <- indice - 1
-    para i de indice ate 1 passo -1 faca
-        escreva(hexadecimal[i])
-    fimpara
-    escreval("")
+   escreval("O número binário em hexadecimal é: ", hexadecimal)
 fimprocedimento
+
+
 
 procedimento hexbin()
-Var
+var
+   hexadecimal, binario, caract: caractere // Armazena os valores intermediários e o resultado
+   i, tamanho: inteiro
+inicio
+   escreva("Digite o número hexadecimal: ")
+   leia(hexadecimal)
 
-      hexadecimal: caractere
-      binario: vetor[1..80] de caractere // Vetor para armazenar o número binário temporariamente
-      digitos_hex: vetor[0..40] de caractere
-      binario_digito: vetor[0..40] de caractere
-      digito_hex, i, j, k, indice, tamanho, hexaD: inteiro
-   inicio
-    escreva("Digite o numero hexadecimal: ")
-    leia(hexadecimal)
+   binario <- "" // Inicializa o resultado binário como vazio
+   tamanho <- compr(hexadecimal) // Obtém o tamanho do número hexadecimal
 
-    // Inicializa o vetor de dígitos hexadecimais
-    digitos_hex[0] <- "0"
-    digitos_hex[1] <- "1"
-    digitos_hex[2] <- "2"
-    digitos_hex[3] <- "3"
-    digitos_hex[4] <- "4"
-    digitos_hex[5] <- "5"
-    digitos_hex[6] <- "6"
-    digitos_hex[7] <- "7"
-    digitos_hex[8] <- "8"
-    digitos_hex[9] <- "9"
-    digitos_hex[10] <- "A"
-    digitos_hex[11] <- "B"
-    digitos_hex[12] <- "C"
-    digitos_hex[13] <- "D"
-    digitos_hex[14] <- "E"
-    digitos_hex[15] <- "F"
+   // Processa cada caractere do número hexadecimal
+   para i de 1 até tamanho faça
+      caract <- copia(hexadecimal, i, 1) // Extrai o caractere na posição i
+      caract <- maiusc(caract)
+      escolha caract
+         caso "0"
+              binario <- binario + "0000"
+         caso "1"
+              binario <- binario + "0001"
+         caso "2"
+              binario <- binario + "0010"
+         caso "3"
+              binario <- binario + "0011"
+         caso "4"
+              binario <- binario + "0100"
+         caso "5"
+              binario <- binario + "0101"
+         caso "6"
+              binario <- binario + "0110"
+         caso "7"
+              binario <- binario + "0111"
+         caso "8"
+              binario <- binario + "1000"
+         caso "9"
+              binario <- binario + "1001"
+         caso "A"
+              binario <- binario + "1010"
+         caso "B"
+              binario <- binario + "1011"
+         caso "C"
+              binario <- binario + "1100"
+         caso "D"
+              binario <- binario + "1101"
+         caso "E"
+              binario <- binario + "1110"
+         caso "F"
+              binario <- binario + "1111"
+         outrocaso
+            escreva("Erro: Caractere inválido '", caract, "' no número hexadecimal.")
+            interrompa
+      fimescolha
+   fimpara
 
-    digitos_hex[16] <- "10"
-    digitos_hex[17] <- "11"
-    digitos_hex[18] <- "12"
-    digitos_hex[19] <- "13"
-    digitos_hex[20] <- "14"
-    digitos_hex[21] <- "15"
-    digitos_hex[22] <- "16"
-    digitos_hex[23] <- "17"
-    digitos_hex[24] <- "18"
-    digitos_hex[25] <- "19"
-    digitos_hex[26] <- "1A"
-    digitos_hex[27] <- "1B"
-    digitos_hex[28] <- "1C"
-    digitos_hex[29] <- "1D"
-    digitos_hex[30] <- "1E"
-    digitos_hex[31] <- "1F"
-
-    digitos_hex[32] <- "20"
-    digitos_hex[33] <- "21"
-    digitos_hex[34] <- "22"
-    digitos_hex[35] <- "23"
-    digitos_hex[36] <- "24"
-    digitos_hex[37] <- "25"
-    digitos_hex[38] <- "26"
-    digitos_hex[39] <- "27"
-    digitos_hex[40] <- "28"
-
-
-    // Inicializa o vetor com representações binárias
-    binario_digito[0] <- "0000"
-    binario_digito[1] <- "0001"
-    binario_digito[2] <- "0010"
-    binario_digito[3] <- "0011"
-    binario_digito[4] <- "0100"
-    binario_digito[5] <- "0101"
-    binario_digito[6] <- "0110"
-    binario_digito[7] <- "0111"
-    binario_digito[8] <- "1000"
-    binario_digito[9] <- "1001"
-    binario_digito[10] <- "1010"
-    binario_digito[11] <- "1011"
-    binario_digito[12] <- "1100"
-    binario_digito[13] <- "1101"
-    binario_digito[14] <- "1110"
-    binario_digito[15] <- "1111"
-
-        binario_digito[16] <- "10000"
-    binario_digito[17] <- "10001"
-    binario_digito[18] <- "10010"
-    binario_digito[19] <- "10011"
-    binario_digito[20] <- "10100"
-    binario_digito[21] <- "10101"
-    binario_digito[22] <- "10110"
-    binario_digito[23] <- "10111"
-    binario_digito[24] <- "11000"
-    binario_digito[25] <- "11001"
-    binario_digito[26] <- "11010"
-    binario_digito[27] <- "11011"
-    binario_digito[28] <- "11100"
-    binario_digito[29] <- "11101"
-    binario_digito[30] <- "11110"
-    binario_digito[31] <- "11111"
-
-    binario_digito[32] <- "100000"
-    binario_digito[33] <- "100001"
-    binario_digito[34] <- "100010"
-    binario_digito[35] <- "100011"
-    binario_digito[36] <- "100100"
-    binario_digito[37] <- "100101"
-    binario_digito[38] <- "100110"
-    binario_digito[39] <- "100111"
-    binario_digito[40] <- "101000"
-
-
-    // Obtém o tamanho do valor hexadecimal
-    tamanho <- compr(hexadecimal)
-    indice <- 1
-
-    // Converte cada caractere do hexadecimal para binário
-    para i de 1 ate tamanho faca
-        // Procura o índice correspondente do caractere hexadecimal
-        para j de 0 ate 40 faca
-            se digitos_hex[j] = hexadecimal entao
-                digito_hex <- j
-                // Armazena a representação binária correspondente
-                para k de 1 ate 4 faca
-                    binario[indice] <- binario_digito[digito_hex][k]
-                    indice <- indice + 1
-                fimpara
-            fimse
-        fimpara
-    fimpara
-
-    // Exibe o número convertido
-    escreva("O numero hexadecimal em binario e: ")
-        escreva(binario[i])
-    escreval("")
-// Seção de Declarações das variáveis
+   // Exibe o resultado
+   escreval("O número hexadecimal em binário é: ", binario)
 fimprocedimento
+
+
 
 
 
