@@ -1,6 +1,4 @@
 algoritmo "Calculadora Cientifica"
-// Disciplina   : [Linguagem e Lógica de Programação]
-// Professor   : Antonio Carlos Nicolodi
 
 // Definicao das Funcoes de Operacoes Matematicas
 funcao adicao(x, y: real): real
