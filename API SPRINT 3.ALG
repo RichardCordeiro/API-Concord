@@ -138,7 +138,7 @@ inicio
    fimpara
 
    se valido = falso então
-      escreval("Erro: O valor digitado não é um número binário válido.")
+      escreval("Erro o valor digitado não é um número binário válido.")
    senao
       // Convertendo o binário para decimal
       valorImaginario <- 1
@@ -178,7 +178,7 @@ inicio
    fimpara
 
    se valido = falso então
-      escreval("Erro: O número digitado não é um número decimal válido.")
+      escreval("Erro o número digitado não é um número decimal válido.")
    senao
       // Convertendo o texto para número inteiro
       num <- 0
@@ -230,7 +230,7 @@ inicio
    fimpara
 
    se valido = falso entao
-      escreval("Erro: O número digitado não é binário válido.")
+      escreval("Erro o número digitado não é binário válido.")
       senao
       // Convertendo o texto para número real
    valor <- 0
@@ -285,7 +285,7 @@ inicio
    fimpara
 
    se valido = falso entao
-      escreval("Erro: O número digitado não é octal válido.")
+      escreval("Erro o número digitado não é octal válido.")
       senao
       // Convertendo o número octal para decimal
    decimal <- 0
@@ -333,7 +333,7 @@ inicio
       caract <- copia(binario, i, 1) // Extrai o caractere
       digito <- asc(caract) - 48 // Converte caractere para número
       se (digito <> 0) e (digito <> 1) entao
-         escreval("Erro: O número contém dígitos que não são binários (0 ou 1).")
+         escreval("Erro o número contém dígitos que não são binários (0 ou 1).")
          retorne
       fimse
       decimal <- decimal * 2 + digito
@@ -411,7 +411,7 @@ inicio
          caso "F"
               binario <- binario + "1111"
          outrocaso
-            escreva("Erro: Caractere inválido '", caract, "' no número hexadecimal.")
+            escreva("Erro caractere inválido '", caract, "' no número hexadecimal.")
             interrompa
       fimescolha
    fimpara
@@ -476,19 +476,27 @@ inicio
             resultado <- divisao(numero1, numero2)
             escreval("Resultado: ", resultado)
          senao
-            escreval("Erro: Divisao por zero!")
+            escreval("Erro Divisao por zero!")
          fimse
       fimse
       se opcao = 5 entao
-         leiaNumeroUnico(numero1)
-         resultado <- 1
-         i <- 1
-         repita
-            resultado <- resultado * i
-            i <- i + 1
-         ate (i > numero1)
-         escreval("Resultado: ", resultado)
-      fimse
+   leiaNumeroUnico(numero1)
+
+   // Verifica se o número está dentro do limite
+   se (numero1 < 0) ou (numero1 > 12) entao
+      escreval("Erro o número deve estar entre 0 e 12 para cálculo de fatorial.")
+   senao
+      // Calcula o fatorial
+      resultado <- 1
+      i <- 1
+      repita
+         resultado <- resultado * i
+         i <- i + 1
+      ate (i > numero1)
+      escreval("Resultado: ", resultado)
+   fimse
+fimse
+
       se opcao = 6 entao
          leiaString(str1, str2)
          escreval("Resultado: ", concatenar(str1, str2))
